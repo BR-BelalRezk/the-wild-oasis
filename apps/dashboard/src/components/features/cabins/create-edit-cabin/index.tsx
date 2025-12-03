@@ -26,9 +26,7 @@ export default function CreateCabinForm({ cabinToEdit }: props) {
     defaultValues: isToEditSession ? editValues : {},
   });
 
-  const { createCabinMutation, isCreatingCabin } = useCreateCabin({
-    action: () => reset(),
-  });
+  const { createCabinMutation, isCreatingCabin } = useCreateCabin();
   const { editCabinMutation, isEditingCabin } = useEditCabin();
 
   const onSubmit = (data: NewCabinForm) => {
@@ -36,12 +34,18 @@ export default function CreateCabinForm({ cabinToEdit }: props) {
       typeof data?.image === "string" ? data?.image : data?.image[0]!;
     console.log(image);
     if (isToEditSession) {
-      editCabinMutation({
-        newCabin: { ...data, image: image! },
-        id: editCabinId!,
-      });
+      editCabinMutation(
+        {
+          newCabin: { ...data, image: image! },
+          id: editCabinId!,
+        },
+        { onSuccess: () => reset() }
+      );
     } else {
-      createCabinMutation({ newCabin: { ...data, image: data?.image[0]! } });
+      createCabinMutation(
+        { newCabin: { ...data, image: data?.image[0]! } },
+        { onSuccess: () => reset() }
+      );
     }
   };
 

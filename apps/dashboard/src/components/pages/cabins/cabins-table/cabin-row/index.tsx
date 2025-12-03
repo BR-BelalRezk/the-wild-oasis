@@ -6,6 +6,7 @@ import Price from "./cabin-row-items/price";
 import DeleteCabin from "@/components/features/cabins/delete-cabin";
 import EditCabin from "@/components/features/cabins/edit-cabin";
 import CreateCabinForm from "@/components/features/cabins/create-edit-cabin";
+import DuplicateCabin from "@/components/features/cabins/duplicate-cabin";
 
 type props = {
   cabin: Cabin;
@@ -33,6 +34,7 @@ export default function CabinRow({ cabin }: props) {
           <span>&mdash;</span>
         )}
         <div>
+          <DuplicateCabin cabin={cabin} />
           <EditCabin />
           <DeleteCabin cabinId={cabin.id} />
         </div>

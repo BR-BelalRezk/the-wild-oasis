@@ -16,6 +16,7 @@ type props = {
   errors?: FieldErrors<NewCabinForm>;
   disabled: boolean;
   isToEditSession: boolean;
+  defaultValue?: string | number;
 };
 
 export default function LabelInput({
@@ -27,6 +28,7 @@ export default function LabelInput({
   errors,
   disabled,
   isToEditSession,
+  defaultValue,
 }: props) {
   return (
     <div
@@ -50,14 +52,14 @@ export default function LabelInput({
           type={inputType}
           id={id}
           {...register(id, { required: "This field is required" })}
-          defaultValue={""}
+          defaultValue={defaultValue || ""}
         />
       )}
 
       {inputType === "number" && (
         <Input
           disabled={disabled}
-          defaultValue={id === "discount" ? 0 : ""}
+          defaultValue={defaultValue || id === "discount" ? 0 : ""}
           type={inputType}
           id={id}
           {...register(id, {
@@ -70,7 +72,7 @@ export default function LabelInput({
             validate:
               id === "discount"
                 ? (value) =>
-                    getValues && Number(value) <= getValues().regularPrice
+                    getValues && Number(value) <= getValues()?.regularPrice
                       ? true
                       : "Discount must be less than regular price"
                 : undefined,
@@ -82,7 +84,7 @@ export default function LabelInput({
         <Textarea
           id={id}
           disabled={disabled}
-          defaultValue=""
+          defaultValue={defaultValue || ""}
           {...register(id, { required: "This field is required" })}
         />
       )}

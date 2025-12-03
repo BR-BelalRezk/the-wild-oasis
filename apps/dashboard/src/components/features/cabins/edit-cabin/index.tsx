@@ -1,3 +1,9 @@
+import { HiPencil } from "react-icons/hi2";
+
 export default function EditCabin() {
-  return <button>Edit</button>;
+  return (
+    <button>
+      <HiPencil />
+    </button>
+  );
 }
