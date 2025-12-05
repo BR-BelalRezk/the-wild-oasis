@@ -10,9 +10,10 @@ import useEditCabin from "@/hooks/cabins/use-edit-cabin";
 
 type props = {
   cabinToEdit?: Cabin;
+  onCloseModal?: () => void;
 };
 
-export default function CreateCabinForm({ cabinToEdit }: props) {
+export default function CabinForm({ cabinToEdit, onCloseModal }: props) {
   const { id: editCabinId, ...editValues } = cabinToEdit || {};
 
   const isToEditSession = Boolean(editCabinId);
@@ -39,12 +40,22 @@ export default function CreateCabinForm({ cabinToEdit }: props) {
           newCabin: { ...data, image: image! },
           id: editCabinId!,
         },
-        { onSuccess: () => reset() }
+        {
+          onSuccess: () => {
+            reset();
+            onCloseModal?.();
+          },
+        }
       );
     } else {
       createCabinMutation(
         { newCabin: { ...data, image: data?.image[0]! } },
-        { onSuccess: () => reset() }
+        {
+          onSuccess: () => {
+            reset();
+            onCloseModal?.();
+          },
+        }
       );
     }
   };
@@ -67,6 +78,7 @@ export default function CreateCabinForm({ cabinToEdit }: props) {
       <ActionButtons
         isToEditSession={isToEditSession}
         disabled={isCreatingCabin || isEditingCabin}
+        onCloseModal={onCloseModal}
       />
     </Form>
   );

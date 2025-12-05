@@ -40,6 +40,7 @@ export default function LabelInput({
           first:pt-0 
           last:pb-0 
           border-b border-grey-100 last:border-b-0
+          w-full
         "
     >
       <label htmlFor={id} className="font-medium">

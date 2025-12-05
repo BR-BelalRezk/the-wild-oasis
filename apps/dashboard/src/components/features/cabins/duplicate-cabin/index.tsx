@@ -1,11 +1,8 @@
+import { MenusButton } from "@/components/compound-components/menus";
 import useCreateCabin from "@/hooks/cabins/use-create-cabin";
 import { HiSquare2Stack } from "react-icons/hi2";
 
-type props = {
-  cabin: NewCabin;
-};
-
-export default function DuplicateCabin({ cabin }: props) {
+export default function DuplicateCabin({ cabin }: { cabin: Cabin }) {
   const { createCabinMutation, isCreatingCabin: isDuplicateCabin } =
     useCreateCabin();
   const handleDuplicateCabin = () => {
@@ -21,8 +18,8 @@ export default function DuplicateCabin({ cabin }: props) {
     });
   };
   return (
-    <button onClick={handleDuplicateCabin} disabled={isDuplicateCabin}>
-      <HiSquare2Stack />
-    </button>
+    <MenusButton icon={<HiSquare2Stack />} onClick={handleDuplicateCabin}>
+      Duplicate
+    </MenusButton>
   );
 }

@@ -1,7 +1,7 @@
 import Row from "@/components/ui/row";
 import Heading from "@/components/ui/heading";
-import CabinsTable from "./cabins-table";
-import CreateCabinForm from "@/components/features/cabins/create-edit-cabin";
+import CreateCabin from "@/components/features/cabins/create-cabin";
+import CabinsTable from "@/components/features/cabins/cabins-table";
 
 export default async function Cabins() {
   return (
@@ -12,8 +12,8 @@ export default async function Cabins() {
       </Row>
       <Row>
         <CabinsTable />
+        <CreateCabin />
       </Row>
-      {/* <CreateCabinForm /> */}
     </>
   );
 }
