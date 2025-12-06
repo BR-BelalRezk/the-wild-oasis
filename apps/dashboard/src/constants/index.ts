@@ -22,6 +22,14 @@ export const cabinTableHeaders = [
   "Discount",
   "",
 ] as const;
+export const bookingTableHeaders = [
+  "Cabin",
+  "Guest",
+  "Dates",
+  "Status",
+  "Amount",
+  "",
+] as const;
 
 export const createCabinFormInputs = [
   {

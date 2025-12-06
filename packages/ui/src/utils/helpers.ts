@@ -1,9 +1,19 @@
-import { formatDistance, parseISO, differenceInDays } from "date-fns";
+import {
+  formatDistance,
+  parseISO,
+  differenceInDays,
+  format,
+  isToday,
+  isFuture,
+  isPast,
+  add,
+} from "date-fns";
 
 /**
  * Calculate the difference in days between two dates.
  * Accepts Date objects or ISO date strings.
  */
+export { format, isToday, isFuture, isPast, add };
 export const subtractDates = (
   date1: string | Date,
   date2: string | Date
