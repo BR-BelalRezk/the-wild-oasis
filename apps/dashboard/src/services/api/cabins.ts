@@ -1,15 +1,45 @@
 "use server";
+import { PAGE_SIZE } from "@/constants";
 import supabase from "../supabase";
 
-export async function getAllCabins() {
-  const { data, error } = await supabase.from("cabins").select("*");
+export async function getAllCabins({
+  discount,
+  sort,
+  page,
+}: {
+  discount?: string; // all | no-discount | with-discount
+  sort?: string; // ex: "regularPrice-asc"
+  page: number;
+}) {
+  let query = supabase.from("cabins").select("*", { count: "exact" });
 
-  if (error) {
-    console.error(error);
-    throw new Error("cabins could not be loaded");
+  // filter
+  if (discount === "no-discount") {
+    query = query.eq("discount", 0);
   }
 
-  return data;
+  if (discount === "with-discount") {
+    query = query.gt("discount", 0);
+  }
+
+  // sort
+  if (sort) {
+    const [field, dir] = sort.split("-");
+    query = query.order(field!, { ascending: dir === "asc" });
+  }
+
+  // pagination
+  if (page) {
+    const from = (page - 1) * PAGE_SIZE;
+    const to = from + (PAGE_SIZE - 1);
+    query = query.range(from, to);
+  }
+
+  const { data, error, count } = await query;
+
+  if (error) throw new Error("cabins could not be loaded");
+
+  return { data, count };
 }
 
 export async function deleteCabin(id: number) {

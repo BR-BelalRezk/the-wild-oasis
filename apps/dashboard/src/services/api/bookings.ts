@@ -2,17 +2,22 @@
 
 import { getToday } from "@repo/ui/utils/helpers";
 import supabase from "../supabase";
+import { PAGE_SIZE } from "@/constants";
 
 export async function getAllBookings({
   filter,
   sort,
+  page,
 }: {
   filter: { field: string; value: string; method: "eq" } | null;
   sort: { field: string; direction: "asc" | "desc" } | null;
+  page: number;
 }) {
   let query = supabase
     .from("bookings")
-    .select("*, cabins(name,image), guests(fullName,email)");
+    .select("*, cabins(name,image), guests(fullName,email)", {
+      count: "exact",
+    });
 
   // filter
   if (filter) {
@@ -20,17 +25,23 @@ export async function getAllBookings({
   }
 
   // sort
-  if (sort ) {
+  if (sort) {
     query = query.order(sort.field, { ascending: sort.direction === "asc" });
   }
 
-  const { data, error } = await query;
+  // pagination
+  if (page) {
+    const from = (page - 1) * PAGE_SIZE;
+    const to = from + (PAGE_SIZE - 1);
+    query = query.range(from, to);
+  }
+
+  const { data, error, count } = await query;
   if (error) {
     console.error(error);
     throw new Error("bookings could not be loaded");
   }
-
-  return data;
+  return { data, count };
 }
 
 export async function getBooking(id: number) {

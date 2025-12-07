@@ -82,3 +82,5 @@ export const settingsData = [
     id: "breakfastPrice",
   },
 ] as const;
+
+export const PAGE_SIZE = 10 as const;
