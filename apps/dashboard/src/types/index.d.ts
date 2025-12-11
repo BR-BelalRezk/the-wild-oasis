@@ -30,6 +30,7 @@ declare namespace App {
     id: number;
     nationalID: string;
     nationality: string;
+    country: string;
   };
   type Booking = {
     cabinId: number;
@@ -51,6 +52,9 @@ declare namespace App {
     guests: Guest;
   };
   type Bookings = Booking[];
+  type Params = Promise<{
+    id: number;
+  }>;
 }
 
 type Cabin = App.Cabin;
@@ -60,3 +64,4 @@ type NewCabin = App.NewCabin;
 type Settings = App.Settings;
 type Booking = App.Booking;
 type Bookings = App.Bookings;
+type Params = App.Params;

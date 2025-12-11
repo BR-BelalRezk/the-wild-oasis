@@ -10,6 +10,12 @@ type props = {
 
 export default function Filter({ filterField, options }: props) {
   const { setParam, searchParams } = useSetSearchParams();
+  const handleClick = (value: string) => {
+    setParam(filterField, value);
+    if (searchParams.get("page")) {
+      setParam("page", "1");
+    }
+  };
   return (
     <div
       className={`
@@ -20,7 +26,7 @@ export default function Filter({ filterField, options }: props) {
       {options.map((option) => (
         <FilterButton
           key={option.value}
-          onClick={() => setParam(filterField, option.value)}
+          onClick={() => handleClick(option.value)}
           active={
             (searchParams?.get(filterField) || options.at(0)?.value) ===
             option.value

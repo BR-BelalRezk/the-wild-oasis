@@ -102,11 +102,13 @@ const MenusButton = ({
   children,
   icon,
   onClick,
+  disabled,
 }: {
   children: React.ReactNode;
   className?: string;
   icon: React.ReactNode;
   onClick?: () => void;
+  disabled?: boolean;
 }) => {
   const { close } = useMenus();
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -117,6 +119,7 @@ const MenusButton = ({
   return (
     <li>
       <button
+        disabled={disabled}
         onClick={handleClick}
         className={cn(
           `
