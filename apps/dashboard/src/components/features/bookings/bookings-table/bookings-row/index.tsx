@@ -13,6 +13,11 @@ import {
 import { HiArrowDownOnSquare, HiArrowUpOnSquare, HiEye } from "react-icons/hi2";
 import { useRouter } from "next/navigation";
 import useCheckOut from "@/hooks/checkinout/use-check-out";
+import {
+  DeleteBooking,
+  DeleteBookingConfirm,
+} from "../booking-crud/delete-booking";
+import { Modal, ModalWindow } from "@/components/compound-components/modal";
 
 export default function BookingRow({ booking }: { booking: Booking }) {
   const router = useRouter();
@@ -41,40 +46,40 @@ export default function BookingRow({ booking }: { booking: Booking }) {
       <Status status={booking?.status} />
 
       <Amount totalPrice={booking?.totalPrice} />
-      <MenusMenu>
-        <MenusToggle menuId={booking?.id} />
-        <MenusList menuId={booking?.id}>
-          <MenusButton
-            icon={<HiEye />}
-            onClick={() => handleSeeDetails("bookings")}
-          >
-            See Details
-          </MenusButton>
-          <MenusButton
-            icon={<HiEye />}
-            onClick={() => handleSeeDetails("bookings")}
-          >
-            Delete
-          </MenusButton>
-          {booking?.status === "unconfirmed" && (
+      <Modal>
+        <MenusMenu>
+          <MenusToggle menuId={booking?.id} />
+          <MenusList menuId={booking?.id}>
             <MenusButton
-              icon={<HiArrowDownOnSquare />}
-              onClick={() => handleSeeDetails("checkinout")}
+              icon={<HiEye />}
+              onClick={() => handleSeeDetails("bookings")}
             >
-              Check in
+              See Details
             </MenusButton>
-          )}
-          {booking?.status === "checked-in" && (
-            <MenusButton
-              disabled={isCheckingOut}
-              icon={<HiArrowUpOnSquare />}
-              onClick={() => checkout(booking?.id)}
-            >
-              Check out
-            </MenusButton>
-          )}
-        </MenusList>
-      </MenusMenu>
+            {booking?.status === "unconfirmed" && (
+              <MenusButton
+                icon={<HiArrowDownOnSquare />}
+                onClick={() => handleSeeDetails("checkinout")}
+              >
+                Check in
+              </MenusButton>
+            )}
+            {booking?.status === "checked-in" && (
+              <MenusButton
+                disabled={isCheckingOut}
+                icon={<HiArrowUpOnSquare />}
+                onClick={() => checkout(booking?.id)}
+              >
+                Check out
+              </MenusButton>
+            )}
+            <DeleteBooking />
+          </MenusList>
+          <ModalWindow name="delete-booking">
+            <DeleteBookingConfirm bookingId={booking?.id} />
+          </ModalWindow>
+        </MenusMenu>
+      </Modal>
     </TableRow>
   );
 }

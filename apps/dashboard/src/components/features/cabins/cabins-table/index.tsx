@@ -26,9 +26,9 @@ export default function CabinsTable() {
       <Table columns={`0.6fr 1.8fr 2.2fr 1fr 1fr 1fr`}>
         <TableHeader>
           {cabinTableHeaders.map((header, index) => (
-            <th className="text-left" key={index}>
+            <div className="text-left" key={index}>
               {header}
-            </th>
+            </div>
           ))}
         </TableHeader>
         <TableBody

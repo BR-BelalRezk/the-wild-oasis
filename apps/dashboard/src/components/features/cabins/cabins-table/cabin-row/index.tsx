@@ -33,6 +33,7 @@ export default function CabinRow({ cabin }: props) {
       ) : (
         <span>&mdash;</span>
       )}
+
       <Modal>
         <MenusMenu>
           <MenusToggle menuId={cabin?.id} />
