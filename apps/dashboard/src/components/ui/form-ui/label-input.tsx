@@ -10,7 +10,7 @@ import Textarea from "./textarea";
 type props = {
   id: keyof NewCabinForm;
   labelText: string;
-  inputType: "text" | "number" | "textarea" | "file";
+  inputType: "text" | "number" | "textarea" | "file" | "email";
   register: UseFormRegister<NewCabinForm>;
   getValues?: UseFormGetValues<NewCabinForm>;
   errors?: FieldErrors<NewCabinForm>;
@@ -47,7 +47,7 @@ export default function LabelInput({
         {labelText}
       </label>
 
-      {inputType === "text" && (
+      {(inputType === "text" || inputType === "email") && (
         <Input
           disabled={disabled}
           type={inputType}

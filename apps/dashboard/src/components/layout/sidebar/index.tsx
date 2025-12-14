@@ -1,5 +1,5 @@
 import Uploader from "@/data/Uploader";
-import Logo from "./logo";
+import Logo from "../../ui/logo";
 import Navbar from "./navbar";
 
 export default function Sidebar() {

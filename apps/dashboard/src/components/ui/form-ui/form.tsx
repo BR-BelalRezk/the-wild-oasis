@@ -9,7 +9,7 @@ export default function Form({ type, className = "", ...props }: FormProps) {
     <form
       {...props}
       className={cn(
-        "overflow-hidden text-[1.4rem]",
+        "overflow-hidden text-[1.4rem] w-full",
         type !== "modal"
           ? "p-10 bg-grey-0 border border-grey-100 rounded-md"
           : "",

@@ -1,3 +1,5 @@
+import Authentication from "@/components/features/authentication";
+
 export default function Login() {
-  return <div>Login</div>;
+  return <Authentication />;
 }
