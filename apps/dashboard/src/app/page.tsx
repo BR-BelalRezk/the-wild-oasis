@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import RouteProtection from "@/components/layout/route-protection";
 
 export default function Home() {
-  return redirect("/dashboard");
+  return <RouteProtection />;
 }

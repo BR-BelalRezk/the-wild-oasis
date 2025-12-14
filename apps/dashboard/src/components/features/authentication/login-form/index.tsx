@@ -8,15 +8,23 @@ import useLogin from "@/hooks/auth/use-login";
 import { useState } from "react";
 
 export default function LoginForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("thewildoasis@email.com");
+  const [password, setPassword] = useState("thewildoasis");
 
   const { loginMutate, isLogin } = useLogin();
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!email || !password) return;
-    loginMutate({ email, password });
+    loginMutate(
+      { email, password },
+      {
+        onSettled: () => {
+          setEmail("");
+          setPassword("");
+        },
+      }
+    );
   }
 
   return (
