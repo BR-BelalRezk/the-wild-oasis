@@ -103,7 +103,12 @@ export default function SignUserUp() {
       </FormRow>
 
       <div className="flex items-center justify-end w-full gap-10 mt-10">
-        <Button variation="secondary" type="reset" disabled={isSigning}>
+        <Button
+          onClick={() => reset()}
+          variation="secondary"
+          type="reset"
+          disabled={isSigning}
+        >
           Cancel
         </Button>
         <Button disabled={isSigning}>Create new user</Button>
