@@ -6,7 +6,7 @@ import useRecentStays from "@/hooks/dashboard/use-recent-stays";
 import useGetAllCabins from "@/hooks/cabins/use-get-all-cabins";
 import DurationChart from "./charts/duration-chart";
 import TodayActivity from "./today-activity";
-import Uploader from "@/components/data/Uploader";
+// import Uploader from "@/components/data/Uploader";
 
 export default function DashboardLayout() {
   const { isLoading: isLoadingRecentBookings, recentBookings } =
@@ -31,7 +31,7 @@ export default function DashboardLayout() {
       <TodayActivity />
       <DurationChart confirmedStays={confirmedStays!} />
       <SalesChart recentBookings={recentBookings!} numDays={numDays} />
-      <Uploader />
+      {/* <Uploader /> */}
     </div>
   );
 }
