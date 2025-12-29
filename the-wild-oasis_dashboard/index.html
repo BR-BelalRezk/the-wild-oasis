@@ -1,11 +1,128 @@
 <!DOCTYPE html>
 <html lang="en" style="scrollbar-width: none">
   <head>
+    <!-- Basic Meta -->
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/logo-light.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>the wild oasis: dashboard</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Title (SEO Optimized) -->
+    <title>The Wild Oasis | Dashboard</title>
+
+    <!-- Primary SEO Meta Description -->
+    <meta
+      name="description"
+      content="The Wild Oasis is an exclusive boutique hotel offering 8 luxurious private cabins. Experience nature, comfort, and refined elegance in a serene escape designed for relaxation and unforgettable stays."
+    />
+
+    <!-- Keywords (Optional but useful for niche branding) -->
+    <meta
+      name="keywords"
+      content="luxury boutique hotel, private cabins, luxury cabins, eco luxury resort, romantic getaway, nature retreat, exclusive hotel, wild oasis hotel"
+    />
+
+    <!-- Author / Brand -->
+    <meta name="author" content="The Wild Oasis" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.thewildoasis.com/" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/logo-light.png" />
+
+    <!-- ========================= -->
+    <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+    <!-- ========================= -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="The Wild Oasis" />
+    <meta
+      property="og:title"
+      content="The Wild Oasis | Luxury Boutique Cabins in Nature"
+    />
+    <meta
+      property="og:description"
+      content="An exclusive boutique hotel with only 8 luxurious cabins. Immerse yourself in nature, privacy, and refined comfort at The Wild Oasis."
+    />
+    <meta property="og:url" content="https://www.thewildoasis.com/" />
+    <meta
+      property="og:image"
+      content="https://www.thewildoasis.com/og-image.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Luxury cabins at The Wild Oasis" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- ========================= -->
+    <!-- Twitter / X Card -->
+    <!-- ========================= -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@thewildoasis" />
+    <meta
+      name="twitter:title"
+      content="The Wild Oasis | Luxury Boutique Hotel"
+    />
+    <meta
+      name="twitter:description"
+      content="Stay in one of only 8 exclusive luxury cabins surrounded by nature. Privacy, elegance, and unforgettable comfort."
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.thewildoasis.com/og-image.jpg"
+    />
+
+    <!-- ========================= -->
+    <!-- SEO Enhancements -->
+    <!-- ========================= -->
+
+    <!-- Search Engine Crawling -->
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="googlebot" content="index, follow" />
+
+    <!-- Theme Color (Mobile Browsers) -->
+    <meta name="theme-color" content="#0f2a1d" />
+
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Structured Data (JSON-LD for Google Rich Results) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Hotel",
+        "name": "The Wild Oasis",
+        "description": "A luxury boutique hotel offering 8 exclusive private cabins surrounded by nature.",
+        "url": "https://www.thewildoasis.com/",
+        "image": "https://www.thewildoasis.com/og-image.jpg",
+        "starRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "amenityFeature": [
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "Private Cabins",
+            "value": true
+          },
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "Luxury Interior",
+            "value": true
+          },
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "Nature Retreat",
+            "value": true
+          }
+        ]
+      }
+    </script>
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/app/core/main.tsx"></script>
